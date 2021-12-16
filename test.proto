@@ -1,0 +1,23 @@
+syntax = "proto3";
+option go_package = ".;test";
+package test;
+
+import "google/api/annotations.proto";
+
+service Service {
+  rpc CreateTest(TestRequest) returns (TestResponse) {
+    option (google.api.http) = {
+      post: "/tests/{test_id}",
+      body: "*"
+    };
+  }
+}
+
+message TestRequest {
+  string test_id = 1;
+  string some_data = 2;
+}
+
+message TestResponse {
+  string test_data = 1;
+}

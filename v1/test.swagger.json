@@ -1,0 +1,72 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "test.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/tests/{test_id}": {
+      "post": {
+        "operationId": "CreateTest",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/testTestResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "test_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/testTestRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "testTestRequest": {
+      "type": "object",
+      "properties": {
+        "test_id": {
+          "type": "string"
+        },
+        "some_data": {
+          "type": "string"
+        }
+      }
+    },
+    "testTestResponse": {
+      "type": "object",
+      "properties": {
+        "test_data": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
